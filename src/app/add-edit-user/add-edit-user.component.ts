@@ -24,14 +24,27 @@ export class AddEditUserComponent {
     this.regForm = this._fb.group({
       firstName: '',
       lastName: '',
+      birthdate: '',
+      email: '',
+      telephone: '',
       gender: '1',
       province: 'Sevilla',
+      passw: '',
+      repeatpassw: '',
+      observations: '',
     });
   }
 
   sendRegForm() {
     if (this.regForm.valid) {
+      alert(
+        'Usuario registrado correctamente. Por favor, confirme con el Email que le hemos mandado a su dirección de Email.'
+      );
       console.log(this.regForm.value);
     }
+  }
+
+  clearInput(field: string) {
+    this.regForm.get(field)?.setValue('');
   }
 }

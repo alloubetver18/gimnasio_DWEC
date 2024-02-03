@@ -5,28 +5,31 @@
       <mat-form-field class="example-form-field" appearance="outline">
         <mat-label>Nombre</mat-label>
         <input
+          id="firstName"
           matInput
           type="text"
           formControlName="firstName"
-          [(ngModel)]="firstNameValue"
         />
         <button
           matSuffix
-          *ngIf="firstNameValue"
           mat-icon-button
           aria-label="Clear"
-          (click)="firstNameValue = ''"
+          type="button"
+          (click)="clearInput('firstName')"
         >
           <mat-icon>close</mat-icon>
         </button>
-        <!-- <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-          <mat-icon>close</mat-icon>
-        </button> -->
       </mat-form-field>
-      <mat-form-field class="example-form-field">
+      <mat-form-field class="example-form-field" appearance="outline">
         <mat-label>Apellidos</mat-label>
-        <input matInput type="text" formControlName="lastName" />
-        <button matSuffix mat-icon-button aria-label="Clear">
+        <input id="lastName" matInput type="text" formControlName="lastName" />
+        <button
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          type="button"
+          (click)="clearInput('lastName')"
+        >
           <mat-icon>close</mat-icon>
         </button>
         <!-- <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
@@ -37,7 +40,12 @@
     <div class="row date-email">
       <mat-form-field appearance="outline">
         <mat-label>Fecha de Nacimiento</mat-label>
-        <input matInput [matDatepicker]="picker" />
+        <input
+          id="birthdate"
+          matInput
+          [matDatepicker]="picker"
+          formControlName="birthdate"
+        />
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle
           matIconSuffix
@@ -47,8 +55,14 @@
       </mat-form-field>
       <mat-form-field class="example-form-field" appearance="outline">
         <mat-label>Email</mat-label>
-        <input matInput type="text" formControlName="email" />
-        <button matSuffix mat-icon-button aria-label="Clear">
+        <input id="email" matInput type="text" formControlName="email" />
+        <button
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          type="button"
+          (click)="clearInput('email')"
+        >
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
@@ -57,17 +71,18 @@
       <mat-form-field class="example-form-field" appearance="outline">
         <mat-label>Teléfono</mat-label>
         <input
+          id="telephone"
           matInput
           type="text"
-          formControlName="firstName"
-          [(ngModel)]="firstNameValue"
+          formControlName="telephone"
         />
         <button
           matSuffix
           *ngIf="firstNameValue"
           mat-icon-button
           aria-label="Clear"
-          (click)="firstNameValue = ''"
+          type="button"
+          (click)="clearInput('telephone')"
         >
           <mat-icon>close</mat-icon>
         </button>
@@ -82,7 +97,7 @@
       </mat-form-field>
       <!-- <p>Selected food: {{ provinces }}</p> -->
     </div>
-    <div class="row">
+    <div class="row gender">
       <mat-label>Género</mat-label>
       <mat-radio-group aria-label="Elija su género" formControlName="gender">
         <mat-radio-button value="1">Masculino</mat-radio-button>
@@ -90,27 +105,61 @@
         <mat-radio-button value="3">Otro</mat-radio-button>
       </mat-radio-group>
     </div>
-    <div class="row">
-      <mat-form-field appearance="outline">
-        <mat-label>Provincia</mat-label>
-        <mat-select formControlName="province">
-          <mat-option *ngFor="let province of provinces" [value]="province">
-            {{ province }}
-          </mat-option>
-        </mat-select>
+    <div class="row passw">
+      <mat-form-field class="example-form-field" appearance="outline">
+        <mat-label>Contraseña</mat-label>
+        <input id="passw" matInput type="password" formControlName="passw" />
+        <button
+          matSuffix
+          *ngIf="firstNameValue"
+          mat-icon-button
+          aria-label="Clear"
+          (click)="clearInput('passw')"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+        <!-- <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+          <mat-icon>close</mat-icon>
+        </button> -->
       </mat-form-field>
-      <!-- <p>Selected food: {{ provinces }}</p> -->
+      <mat-form-field class="example-form-field" appearance="outline">
+        <mat-label>Repetir Contraseña</mat-label>
+        <input
+          id="repeatpassw"
+          matInput
+          type="password"
+          formControlName="repeatpassw"
+        />
+        <button
+          matSuffix
+          *ngIf="firstNameValue"
+          mat-icon-button
+          aria-label="Clear"
+          (click)="clearInput('repeatpassw')"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
     </div>
-    <div class="row">
-      <mat-form-field appearance="outline">
-        <mat-label>Provincia</mat-label>
-        <mat-select formControlName="province">
-          <mat-option *ngFor="let province of provinces" [value]="province">
-            {{ province }}
-          </mat-option>
-        </mat-select>
+    <div class="row observations">
+      <mat-form-field class="example-form-field" appearance="outline">
+        <mat-label>Observaciones</mat-label>
+        <textarea
+          id="observations"
+          matInput
+          type="text"
+          formControlName="observations"
+          rows="4"
+        ></textarea>
+        <button
+          matSuffix
+          *ngIf="firstNameValue"
+          mat-icon-button
+          aria-label="Clear"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
       </mat-form-field>
-      <!-- <p>Selected food: {{ provinces }}</p> -->
     </div>
   </mat-dialog-content>
 
