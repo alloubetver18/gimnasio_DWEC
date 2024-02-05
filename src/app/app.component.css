@@ -1,4 +1,17 @@
-
 .example-spacer {
   flex: 1 1 auto;
+}
+
+#main-body{
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 1024px;
+
+}
+#main-body mat-form-field{
+    width: 100%;
+}
+
+#actionslable{
+  padding-left: 2rem;
 }

@@ -1,0 +1,74 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Post 1"
+    },
+    {
+      "id": 2,
+      "title": "Post 2"
+    },
+    {
+      "id": 3,
+      "title": "Post 3"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "Comment 1",
+      "postId": 1
+    },
+    {
+      "id": 2,
+      "body": "Comment 2",
+      "postId": 1
+    },
+    {
+      "id": 3,
+      "body": "Comment 3",
+      "postId": 2
+    }
+  ],
+  "users": [
+    {
+      "firstName": "Alban",
+      "lastName": "Loubet Vergara",
+      "birthdate": "1987-12-17T23:00:00.000Z",
+      "email": "alban.loubet@gmail.com",
+      "telephone": "676584366",
+      "gender": "1",
+      "province": "Cádiz",
+      "passw": "123456",
+      "repeatpassw": "123456",
+      "observations": "Me mola estar en forma",
+      "id": 1
+    },
+    {
+      "firstName": "Zen",
+      "lastName": "Loubet Vergara",
+      "birthdate": "1987-10-17T23:00:00.000Z",
+      "email": "zenlove260@hotmail.com",
+      "telephone": "676584366",
+      "gender": "1",
+      "province": "Cádiz",
+      "passw": "zenlove",
+      "repeatpassw": "zenlove",
+      "observations": "",
+      "id": 2
+    },
+    {
+      "firstName": "alguien",
+      "lastName": "alguien",
+      "birthdate": "2024-02-04T23:00:00.000Z",
+      "email": "alguien@alguien.es",
+      "telephone": "666666666",
+      "gender": "3",
+      "province": "Cádiz",
+      "passw": "123",
+      "repeatpassw": "123",
+      "observations": "",
+      "id": 3
+    }
+  ]
+}

@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from '../service/user.service';
+import { MatDialogRef } from '@angular/material/dialog';
+import { SharedService } from '../shared/shared.service';
 
 @Component({
   selector: 'app-add-edit-user',
@@ -20,31 +23,56 @@ export class AddEditUserComponent {
 
   regForm: FormGroup;
   firstNameValue: string = '';
-  constructor(private _fb: FormBuilder) {
+  constructor(
+    private _fb: FormBuilder,
+    private _userService: UserService,
+    private _dialogRef: MatDialogRef<AddEditUserComponent>,
+    private _sharedService: SharedService
+  ) {
     this.regForm = this._fb.group({
-      firstName: '',
-      lastName: '',
-      birthdate: '',
-      email: '',
-      telephone: '',
-      gender: '1',
-      province: 'Sevilla',
-      passw: '',
-      repeatpassw: '',
-      observations: '',
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+      birthdate: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      telephone: ['', [Validators.required]],
+      gender: [null, [Validators.required]],
+      province: [null, [Validators.required]],
+      passw: ['', [Validators.required]],
+      repeatpassw: ['', [Validators.required]],
+      observations: [''],
     });
   }
 
-  sendRegForm() {
-    if (this.regForm.valid) {
-      alert(
-        'Usuario registrado correctamente. Por favor, confirme con el Email que le hemos mandado a su dirección de Email.'
-      );
+  submitRegForm() {
+    if (this.regForm.valid && this.checkPasswrd()) {
+      this._userService.addUser(this.regForm.value).subscribe({
+        next: (val: any) => {
+          this._sharedService.openSnackBar(
+            'Usuario registrado correctamente. Por favor, confirme con el Email que le hemos mandado a su dirección de Email.'
+          );
+          this._dialogRef.close();
+        },
+        error(err) {
+          console.log(err);
+        },
+      });
       console.log(this.regForm.value);
+    } else {
+      this._sharedService.openSnackBar('Error de registro');
     }
   }
 
   clearInput(field: string) {
     this.regForm.get(field)?.setValue('');
+  }
+
+  checkPasswrd() {
+    if (
+      this.regForm.get('passw')?.value == this.regForm.get('repeatpassw')?.value
+    ) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

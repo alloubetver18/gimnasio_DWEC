@@ -5,10 +5,20 @@
   mat-form-field{
     width: 100%;
   }
+  mat-error{
+    margin-left: -19px;
+  }
 }
 
 textarea{
   resize: none;
 }
 
+.action{
+  padding: 0 25px 20px;
+}
+
+button{
+  flex: 1;
+}
 
