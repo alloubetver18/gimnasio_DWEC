@@ -6,6 +6,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { SharedService } from './shared/shared.service';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { Result } from '../../../../../../Angula-Curso-2/03-pokeapp/src/app/poke/interfaces/pokeList.interface';
 
 @Component({
   selector: 'app-root',
@@ -38,7 +40,10 @@ export class AppComponent implements OnInit {
   ) {}
 
   openAddEditUserDialog() {
-    this._dialog.open(AddEditUserComponent);
+    const dialogRef = this._dialog.open(AddEditUserComponent);
+    dialogRef.afterClosed().subscribe((result) => {
+      this.getUsersList();
+    });
   }
 
   getUsersList(): any {
@@ -53,12 +58,17 @@ export class AppComponent implements OnInit {
   }
 
   deleteUser(user: any): any {
-    this._userService.deleteUser(user).subscribe({
-      next: (res: any) => {
-        this._sharedService.openSnackBar('Usuario Borrado.');
-        this.getUsersList();
-      },
-      error: console.log,
+    const dialogRef = this._dialog.open(ConfirmDialogComponent);
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this._userService.deleteUser(user).subscribe({
+          next: (res: any) => {
+            this._sharedService.openSnackBar('Usuario Borrado.');
+            this.getUsersList();
+          },
+          error: console.log,
+        });
+      }
     });
   }
 

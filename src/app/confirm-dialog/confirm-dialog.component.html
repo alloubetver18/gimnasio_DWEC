@@ -1,1 +1,22 @@
-<p>confirm-dialog works!</p>
+<h1 mat-dialog-title>Borrar Usuario</h1>
+<div mat-dialog-content>Realmente deseas borrar al usuario {{ usuario }}?</div>
+<div id="botones" mat-dialog-actions>
+  <button
+    mat-button
+    mat-raised-button
+    color="primary"
+    [mat-dialog-close]="true"
+    (click)="borrarUsuario()"
+  >
+    Aceptar
+  </button>
+  <button
+    mat-button
+    mat-raised-button
+    color="warn"
+    mat-dialog-close
+    cdkFocusInitial
+  >
+    Cancelar
+  </button>
+</div>
